@@ -56,9 +56,10 @@ export default function Home() {
 function fromTextToTable(origin: string) {
   if (origin === "") console.log("no input");
   const rows: Array<Array<string>> | undefined = origin
-    ?.split("\n")
+    ?.trim()
+    .split("\n")
     .map((line) => {
-      return line.split("\t");
+      return line.split(/\u{9}|\t/);
     });
 
   console.log(rows);
